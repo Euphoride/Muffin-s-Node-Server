@@ -1,0 +1,8 @@
+DETAIL: ilovethis
+
+RATING: 4.32
+
+EMAIL: hi@there
+
+PHONE: 1234"
+

@@ -1,11 +1,4 @@
 {
-  "city2":
-	{
-		"dummy": "DETAIL,hi",
-		"dummy": "RATING,4",
-		"dummy": "EMAIL,bob@yahoo.com",
-		"dummy": "PHONE,1800800800"
-	},
   "basePad":
   {
   }

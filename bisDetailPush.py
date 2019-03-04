@@ -128,7 +128,8 @@ for lineCounter in range(len(jsonData) - 1):
 
                 try:
                     if jsonData[insertionLine-4:insertionLine] == testing:
-                        # we don't want duplicates as it will screw with storage capacity
+                        # we don't want irregular duplicates as it will screw with storage capacity
+                        # will also look at creating a python script to validate all json files and remove duplicates
                         cont = True
                     else:
                         backupp = jsonData[:insertionLine]

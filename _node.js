@@ -137,12 +137,28 @@ app.get("*", function(req, res) {
       // i love how i find any excuse to pass node onto python
 
       executionString = "python3 bisDetailPush.py " + cityName + " " + businessDetails + " " + businessRating + " " + businessEmailN + " " + businessEmailD + " " + businessPhone + " " + businessName;
-      exec(executionString, (err, stdout, stderr) +> {
+      exec(executionString, (err, stdout, stderr) => {
         console.log(stdout);
       });
 
       res.end(done);
+    } else if (req.query.type == "BusinessDataGET") {
+      nameToUse       = req.query.name;
 
+      executionString = "python3 bisDetailGET.py " + nameToUse;
+      exec(executionString, (err, stdout, stderr) => {
+        console.log(stdout);
+        console.log(stderr);
+      });
+
+      fs.readFile("NPTIG.txt", function (err, data) {
+        var dataToConsole = data.toString("utf8", 0, data.length);
+
+        console.log(dataToConsole);
+        res.writeHead(200, {'Content-Type': 'text/html'});
+        res.write(dataToConsole);
+        res.end();
+      });
     } else {
       res.writeHead(404, {'Content-Type':'text/html'});
       res.end("-- You've reached the 404 wall. Either you're not invited or there's a bug in the server/request --");

@@ -1,11 +1,13 @@
 import sys
 import time
 
+# sub2willNE
+
 ourCityFlag  = False
 tf           = True
 
 iteratorPad  = 1
-jsonFile     = "datastore/businesses.json"
+jsonFile     = "datastore/dataStoreBusiness.json"
 
 nameDepth    = 0
 tfCounter    = 0
@@ -13,10 +15,10 @@ tfCounter    = 0
 cityCount    = 0
 nonOurCount  = 0
 
-city         = sys.argv[1]
+businessName     = sys.argv[1]
 
 dataToSendBack   = []
-jsonFileHandlerR = open("datastore/businesses.json", 'r')
+jsonFileHandlerR = open(jsonFile, 'r')
 
 jsonData     = jsonFileHandlerR.readlines()
 
@@ -42,17 +44,7 @@ for lineCounter in range(len(jsonData) - 1):
 
             if currentLine[len(currentLine) - 2] == ":":
                 # it's a city
-                cityCount = cityCount + 1
-
-                currentCity = currentLine[2:len(currentLine) - 3]
-                # now we want to know if it's the city we want
-                if currentCity == city:
-                    ourCityFlag = True
-                    tf = False
-                else:
-                    nonOurCount = nonOurCount + 1
-            if nonOurCount == cityCount:
-                dataToSendBack.append("Nothing Found")
+                ourCityFlag = True
         else:
             # now we're within our city, first we're look for the
             # the end signal (a "}")
@@ -64,11 +56,28 @@ for lineCounter in range(len(jsonData) - 1):
             elif currentLine == '  {\n' or currentLine == '\t{\n':
                 continue
             else:
-                dataToSendBack.append(currentLine[1:])
+                # some logic to find our specific business
+
+                # remove the two tabs in front of the lines
+                ourLine          = currentLine[2:]
+
+                ourNameFormatted = "\"" + businessName + "\""
+
+                lengthOfOurName  = len(ourNameFormatted)
+
+                if ourLine[:lengthOfOurName] == ourNameFormatted:
+                    lineSplit      = ourLine.split(":")
+
+                    typeValueSplit = lineSplit[1].split(",")
+
+                    type  = typeValueSplit[0][2:]
+                    value = typeValueSplit[1][:-1]
+
+                    dataToSendBack.append(type + ": " + value + "\n")
 
 jsonFileHandlerR.close()
 
-textFileHandlerW = open("NPTI.txt", 'w')
+textFileHandlerW = open("NPTIG.txt", 'w')
 textFileHandlerW.writelines(dataToSendBack)
 textFileHandlerW.close()
 
