@@ -98,7 +98,7 @@ for lineCounter in range(len(jsonData) - 1):
 
                     jsonData[editLine] = ouredit
 
-                businessLOA   = "\"" + businessLat + "\\" + businessLong + "\"\n"
+                businessLOA   = "\"\\\\" + businessLat + "\\" + businessLong + "\"\n"
                 insertionData = "\t\t\"" + businessName + "\": " + businessLOA
 
                 backupp = jsonData[:insertionLine]
