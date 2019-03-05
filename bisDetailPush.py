@@ -107,16 +107,16 @@ for lineCounter in range(len(jsonData) - 1):
 
                     jsonData[editLine] = ouredit
 
-                businessDeets   = "\"" + "DETAIL," + businessDetails +"\",\n"
+                businessDeets   = "\"" + "DETAIL\\" + businessDetails +"\",\n"
                 BDID            = "\t\t\"" + businessName + "\": " + businessDeets
 
-                businessRat     = "\"" + "RATING," + businessRating +"\",\n"
+                businessRat     = "\"" + "RATING\\" + businessRating +"\",\n"
                 BRID            = "\t\t\"" + businessName + "\": " + businessRat
 
-                businessEmail   = "\"" + "EMAIL," + businessEmailN + "@" + businessEmailD +"\",\n"
+                businessEmail   = "\"" + "EMAIL\\" + businessEmailN + "@" + businessEmailD +"\",\n"
                 BEID            = "\t\t\"" + businessName + "\": " + businessEmail
 
-                businessPhoneP  = "\"" + "PHONE," + businessPhone +"\"\n"
+                businessPhoneP  = "\"" + "PHONE\\" + businessPhone +"\"\n"
                 BPID            = "\t\t\"" + businessName + "\": " + businessPhoneP
 
                 insertionData   = BDID + BRID + BEID + BPID
@@ -124,7 +124,7 @@ for lineCounter in range(len(jsonData) - 1):
                 testing.append(BDID)
                 testing.append(BRID)
                 testing.append(BEID)
-                testing.append(BPID[:-1] + "\,\n")
+                testing.append(BPID[:-1] + ",\n")
 
                 try:
                     if jsonData[insertionLine-4:insertionLine] == testing:
