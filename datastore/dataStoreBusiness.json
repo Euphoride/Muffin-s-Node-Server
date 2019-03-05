@@ -1,10 +1,10 @@
 {
   "London":
 	{
-		"hithere": "DETAIL,hi-there",
-		"hithere": "RATING,4.3",
-		"hithere": "EMAIL,hithere@hithere.com",
-		"hithere": "PHONE,1234"
+		"hithere": "DETAIL\,hi-there",
+		"hithere": "RATING\,4.3",
+		"hithere": "EMAIL\,hithere@hithere.com",
+		"hithere": "PHONE\,1234"
 	},
   "basePad":
   {

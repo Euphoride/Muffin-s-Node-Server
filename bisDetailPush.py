@@ -124,7 +124,7 @@ for lineCounter in range(len(jsonData) - 1):
                 testing.append(BDID)
                 testing.append(BRID)
                 testing.append(BEID)
-                testing.append(BPID[:-1] + ",\n")
+                testing.append(BPID[:-1] + "\,\n")
 
                 try:
                     if jsonData[insertionLine-4:insertionLine] == testing:

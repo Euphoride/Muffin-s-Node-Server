@@ -57,7 +57,7 @@ for lineCounter in range(len(jsonData) - 1):
             if tfCounter == 0:
                 if nonOurCount == cityCount:
                     cityName = "  \"" + city + "\":\n"
-                    braces   = "\t{\n\t},\n"
+                    braces   = "\t{\n\t}\,\n"
 
                     citySnip = [cityName, braces]
 
