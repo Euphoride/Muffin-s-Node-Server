@@ -19,8 +19,10 @@ app.get("*", function(req, res) {
     // grab screenshots of the NTPIX files
     // so that we can circumvent a double in incoming traffic
 
-    var NPTIData  = fs.readFileSync("NPTI.txt")
-    var NPTIGData = fs.readFileSync("NPTIG.txt")
+    var NPTIData  = fs.readFileSync("NPTI.txt");
+    var NPTIGData = fs.readFileSync("NPTIG.txt");
+
+    var x = true;
 
     // grab the current time
     var currentTime  = new Date();
@@ -97,22 +99,27 @@ app.get("*", function(req, res) {
           console.log(stderr);
         });
 
-        fs.readFile("NPTI.txt", function (err, data) {
-          while (true) {
-            if data != NPTIData {
-              var dataToConsole = data.toString("utf8", 0, data.length);
+        var xCounter = 0;
 
-              console.log(dataToConsole);
+        console.log("b1")
+        while (x) {
+          console.log("a1")
+          fs.readFile("token.txt", function (err, tokenData) {
+            console.log("a2")
+            tokenData = tokenData.toString("UTF-8", 0, tokenData.length);
 
-              res.writeHead(200, {'Content-Type': 'text/html'});
-              res.write(dataToConsole);
-              res.end();
-              break
-            } else {
-              continue
+            if (tokenData == "token") {
+              fs.readFile("NPTI.txt", function (err, nData) {
+                nData = nData.toString("UTF-8", 0, nData.length);
+
+                res.writeHead(200, {"Content-Type": "text/html"});
+                res.write(nData);
+                res.end()
+                x = false;
+              });
             }
-          }
-        });
+          });
+        }
       });
     } else if (req.query.type == "JSONDataPUSH") {
         clientLat  = req.query.lat;
@@ -265,9 +272,11 @@ app.get("*", function(req, res) {
         console.log(stderr);
       });
 
+      var xCounterG = 0;
+
       fs.readFile("NPTIG.txt", function (err, data) {
-        while (true) {
-          if data != NPTIGData {
+        while (x) {
+          if (data != NPTIGData) {
             var dataToConsole = data.toString("utf8", 0, data.length);
 
             console.log(dataToConsole);
@@ -275,8 +284,17 @@ app.get("*", function(req, res) {
             res.write(dataToConsole);
             res.end();
             break
+          } else if (xCounterG == 1000000) {
+            var dataToConsole = data.toString("utf8", 0, data.length);
+
+            console.log(dataToConsole);
+
+            res.writeHead(200, {'Content-Type': 'text/html'});
+            res.write(dataToConsole);
+            res.end();
+            break
           } else {
-            continue
+            xCounterG = xCounterG + 1
           }
         }
       });

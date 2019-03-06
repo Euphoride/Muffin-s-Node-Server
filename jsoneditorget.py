@@ -72,4 +72,8 @@ textFileHandlerW = open("NPTI.txt", 'w')
 textFileHandlerW.writelines(dataToSendBack)
 textFileHandlerW.close()
 
+txtFileHandler = open("completiontoken.txt", 'w')
+txtFileHandler.writelines("token")
+txtFileHandler.close()
+
 print(dataToSendBack)
