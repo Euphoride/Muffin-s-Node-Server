@@ -16,6 +16,11 @@ function sleep(ms) {
 }
 
 app.get("*", function(req, res) {
+    // grab screenshots of the NTPIX files
+    // so that we can circumvent a double in incoming traffic
+
+    var NPTIData  = fs.readFileSync("NPTI.txt")
+    var NPTIGData = fs.readFileSync("NPTIG.txt")
 
     // grab the current time
     var currentTime  = new Date();
@@ -91,16 +96,22 @@ app.get("*", function(req, res) {
           console.log(stdout);
           console.log(stderr);
         });
-        sleep(100);
 
         fs.readFile("NPTI.txt", function (err, data) {
-          var dataToConsole = data.toString("utf8", 0, data.length);
+          while (true) {
+            if data != NPTIData {
+              var dataToConsole = data.toString("utf8", 0, data.length);
 
-          console.log(dataToConsole);
+              console.log(dataToConsole);
 
-          res.writeHead(200, {'Content-Type': 'text/html'});
-          res.write(dataToConsole);
-          res.end();
+              res.writeHead(200, {'Content-Type': 'text/html'});
+              res.write(dataToConsole);
+              res.end();
+              break
+            } else {
+              continue
+            }
+          }
         });
       });
     } else if (req.query.type == "JSONDataPUSH") {
@@ -255,12 +266,19 @@ app.get("*", function(req, res) {
       });
 
       fs.readFile("NPTIG.txt", function (err, data) {
-        var dataToConsole = data.toString("utf8", 0, data.length);
+        while (true) {
+          if data != NPTIGData {
+            var dataToConsole = data.toString("utf8", 0, data.length);
 
-        console.log(dataToConsole);
-        res.writeHead(200, {'Content-Type': 'text/html'});
-        res.write(dataToConsole);
-        res.end();
+            console.log(dataToConsole);
+            res.writeHead(200, {'Content-Type': 'text/html'});
+            res.write(dataToConsole);
+            res.end();
+            break
+          } else {
+            continue
+          }
+        }
       });
     } else {
       res.writeHead(404, {'Content-Type':'text/html'});
