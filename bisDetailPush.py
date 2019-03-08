@@ -25,6 +25,7 @@ businessEmailN  = sys.argv[4]
 businessEmailD  = sys.argv[5]
 businessPhone   = sys.argv[6]
 businessName    = sys.argv[7]
+businessType    = sys.argv[8]
 
 jsonFileHandlerR = open(jsonFile, 'r')
 
@@ -79,7 +80,7 @@ for lineCounter in range(len(jsonData) - 1):
 
                     jsonFileHandlerW.close()
 
-                    command = "python3 bisDetailPush.py " + city + " " + businessDetails + " " + businessRating + " " + businessEmailN + " " + businessEmailD + " " + businessPhone + " " + businessName;
+                    command = "python3 bisDetailPush.py " + city + " " + businessDetails + " " + businessRating + " " + businessEmailN + " " + businessEmailD + " " + businessPhone + " " + businessName + " " businessType;
                     os.system(command)
 
                     tf = False
@@ -119,12 +120,16 @@ for lineCounter in range(len(jsonData) - 1):
                 businessPhoneP  = "\"" + "PHONE\\" + businessPhone +"\"\n"
                 BPID            = "\t\t\"" + businessName + "\": " + businessPhoneP
 
-                insertionData   = BDID + BRID + BEID + BPID
+                businessTypeT   = "\"" + "TYPE\\" + businessType +"\"\n"
+                BTID            = "\t\t\"" + businessName + "\": " + businessTypeT
+
+                insertionData   = BDID + BRID + BEID + BPID + BTID
 
                 testing.append(BDID)
                 testing.append(BRID)
                 testing.append(BEID)
-                testing.append(BPID[:-1] + ",\n")
+                testing.append(BPID)
+                testing.append(BTID[:-1] + ",")
 
                 try:
                     if jsonData[insertionLine-4:insertionLine] == testing:

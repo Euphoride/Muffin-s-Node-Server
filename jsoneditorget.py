@@ -15,6 +15,8 @@ nonOurCount  = 0
 
 city         = sys.argv[1]
 
+leepboop     = ""
+
 dataToSendBack   = []
 jsonFileHandlerR = open("datastore/businesses.json", 'r')
 
@@ -64,7 +66,13 @@ for lineCounter in range(len(jsonData) - 1):
             elif currentLine == '  {\n' or currentLine == '\t{\n':
                 continue
             else:
-                dataToSendBack.append(currentLine[1:])
+                beepboop = currentLine[1:]
+
+                beepbeep = beepboop.split("--")
+
+                for item in beepbeep:
+                    leepboop = leepboop + item + " "
+                dataToSendBack.append(leepboop)
 
 jsonFileHandlerR.close()
 

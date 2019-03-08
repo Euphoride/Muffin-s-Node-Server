@@ -1,8 +1,4 @@
-DETAIL: ilovethis
-
-RATING: 4.32
-
-EMAIL: hi@there
-
-PHONE: 1234"
-
+DETAIL: hi--there
+RATING: 4.3
+EMAIL: hithere@hithere.com
+PHONE: 1234

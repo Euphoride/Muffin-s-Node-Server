@@ -1,11 +1,23 @@
 // Developed mainly by Emmanuel
 // Tweaks by Hazim
+
+/*
+*   BIG NOTE TO ANYONE WHO EVER IS FOOLISH ENOUGH TO ATTEMPT TO APPEND TO THIS CODE
+*
+*   for the love of god please remember that javascript is async - so everything
+*   after a function(param, function2{}); must be within function2
+*
+*
+*   Hazim (me) has legitimatley spent 7-8 hours of time trying to figure this out
+*/
+
 var http    = require('http');
 var url     = require('url');
 var fs      = require('fs');
 var express = require('express');
 
 var app     = express();
+console.log("Server init successful");
 
 const {
     exec
@@ -16,6 +28,7 @@ function sleep(ms) {
 }
 
 app.get("*", function(req, res) {
+    console.log("server online");
     // grab screenshots of the NTPIX files
     // so that we can circumvent a double in incoming traffic
 
@@ -97,29 +110,15 @@ app.get("*", function(req, res) {
         exec(executionString, (err, stdout, stderr) => {
           console.log(stdout);
           console.log(stderr);
-        });
 
-        var xCounter = 0;
+          fs.readFile("NPTI.txt", function (err, nData) {
+            nData = nData.toString("UTF-8", 0, nData.length);
 
-        console.log("b1")
-        while (x) {
-          console.log("a1")
-          fs.readFile("token.txt", function (err, tokenData) {
-            console.log("a2")
-            tokenData = tokenData.toString("UTF-8", 0, tokenData.length);
-
-            if (tokenData == "token") {
-              fs.readFile("NPTI.txt", function (err, nData) {
-                nData = nData.toString("UTF-8", 0, nData.length);
-
-                res.writeHead(200, {"Content-Type": "text/html"});
-                res.write(nData);
-                res.end()
-                x = false;
-              });
-            }
+            res.writeHead(200, {"Content-Type": "text/html"});
+            res.write(nData);
+            res.end()
           });
-        }
+        });
       });
     } else if (req.query.type == "JSONDataPUSH") {
         clientLat  = req.query.lat;
@@ -202,6 +201,7 @@ app.get("*", function(req, res) {
       businessEmailD  = req.query.emailD;                   // Email Domain
       businessPhone   = req.query.telephone;
       businessName    = req.query.name;
+      businessType    = req.query.BType;
 
       fs.readFile("datastore/longlatplanes.json", function(err, data) {
         // grab client's location through what they've posted via GET
@@ -256,7 +256,7 @@ app.get("*", function(req, res) {
 
         // i love how i find any excuse to pass node onto python
 
-        executionString = "python3 bisDetailPush.py " + cityNameo + " " + businessDetails + " " + businessRating + " " + businessEmailN + " " + businessEmailD + " " + businessPhone + " " + businessName;
+        executionString = "python3 bisDetailPush.py " + cityNameo + " " + businessDetails + " " + businessRating + " " + businessEmailN + " " + businessEmailD + " " + businessPhone + " " + businessName + " " + businessType;
         exec(executionString, (err, stdout, stderr) => {
           console.log(stdout);
         });
@@ -270,38 +270,18 @@ app.get("*", function(req, res) {
       exec(executionString, (err, stdout, stderr) => {
         console.log(stdout);
         console.log(stderr);
-      });
+        fs.readFile("NPTIG.txt", function (err, data) {
+          dataToConsole = data.toString("UTF-8", 0, data.length);
 
-      var xCounterG = 0;
-
-      fs.readFile("NPTIG.txt", function (err, data) {
-        while (x) {
-          if (data != NPTIGData) {
-            var dataToConsole = data.toString("utf8", 0, data.length);
-
-            console.log(dataToConsole);
-            res.writeHead(200, {'Content-Type': 'text/html'});
-            res.write(dataToConsole);
-            res.end();
-            break
-          } else if (xCounterG == 1000000) {
-            var dataToConsole = data.toString("utf8", 0, data.length);
-
-            console.log(dataToConsole);
-
-            res.writeHead(200, {'Content-Type': 'text/html'});
-            res.write(dataToConsole);
-            res.end();
-            break
-          } else {
-            xCounterG = xCounterG + 1
-          }
-        }
+          res.writeHead(200, {'Content-Type': 'text/html'});
+          res.write(dataToConsole);
+          res.end();
+        });
       });
     } else {
       res.writeHead(404, {'Content-Type':'text/html'});
       res.end("-- You've reached the 404 wall. Either you're not invited or there's a bug in the server/request --");
     }
-}).listen(1111);
+}).listen(1234);
 
 // Thank you Emmanuel for the help in this! :)

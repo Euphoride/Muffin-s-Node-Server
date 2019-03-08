@@ -68,10 +68,11 @@ for lineCounter in range(len(jsonData) - 1):
                 if ourLine[:lengthOfOurName] == ourNameFormatted:
                     lineSplit      = ourLine.split(":")
 
-                    typeValueSplit = lineSplit[1].split(",")
+                    typeValueSplit = lineSplit[1].split("\\")
 
-                    type  = typeValueSplit[0][2:]
-                    value = typeValueSplit[1][:-1]
+                    print(typeValueSplit)
+                    type  = typeValueSplit[2]
+                    value = typeValueSplit[4]
 
                     dataToSendBack.append(type + ": " + value + "\n")
 
