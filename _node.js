@@ -123,6 +123,7 @@ app.get("*", function(req, res) {
     } else if (req.query.type == "JSONDataPUSH") {
         clientLat  = req.query.lat;
         clientLong = req.query.long;
+        clienType  = req.query.BType;
 
         fs.readFile("datastore/longlatplanes.json", function(err, data) {
           // grab client's location through what they've posted via GET
@@ -180,7 +181,7 @@ app.get("*", function(req, res) {
               // should execute a python script which edits the json file
               // need to double check security of req.query.long/lat
 
-              executionString = "python3 jsoneditorpush.py " + dataToAddTo + " " + req.query.name + " " + clientLat + " " + clientLong;
+              executionString = "python3 jsoneditorpush.py " + dataToAddTo + " " + req.query.name + " " + clientLat + " " + clientLong + " " + clientType;
               exec(executionString, (err, stdout, stderr) => {
                 console.log(stdout);
               });
@@ -201,7 +202,6 @@ app.get("*", function(req, res) {
       businessEmailD  = req.query.emailD;                   // Email Domain
       businessPhone   = req.query.telephone;
       businessName    = req.query.name;
-      businessType    = req.query.BType;
 
       fs.readFile("datastore/longlatplanes.json", function(err, data) {
         // grab client's location through what they've posted via GET
@@ -256,7 +256,7 @@ app.get("*", function(req, res) {
 
         // i love how i find any excuse to pass node onto python
 
-        executionString = "python3 bisDetailPush.py " + cityNameo + " " + businessDetails + " " + businessRating + " " + businessEmailN + " " + businessEmailD + " " + businessPhone + " " + businessName + " " + businessType;
+        executionString = "python3 bisDetailPush.py " + cityNameo + " " + businessDetails + " " + businessRating + " " + businessEmailN + " " + businessEmailD + " " + businessPhone + " " + businessName;
         exec(executionString, (err, stdout, stderr) => {
           console.log(stdout);
         });

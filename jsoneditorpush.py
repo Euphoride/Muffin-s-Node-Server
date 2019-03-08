@@ -18,6 +18,7 @@ city         = sys.argv[1]
 businessName = sys.argv[2]
 businessLat  = sys.argv[3]
 businessLong = sys.argv[4]
+businessType = sys.argv[5]
 
 jsonFileHandlerR = open("datastore/businesses.json", 'r')
 
@@ -98,7 +99,7 @@ for lineCounter in range(len(jsonData) - 1):
 
                     jsonData[editLine] = ouredit
 
-                businessLOA   = "\"\\\\" + businessLat + "\\\\" + businessLong + "\\\\\"\n"
+                businessLOA   = "\"\\\\" + businessLat + "\\\\" + businessLong + "\\\\" + businessType + "\\\\\"\n"
                 insertionData = "\t\t\"" + businessName + "\": " + businessLOA
 
                 backupp = jsonData[:insertionLine]
