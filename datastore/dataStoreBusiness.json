@@ -1,10 +1,11 @@
 {
   "London":
 	{
-		"hi--there": "\\DETAIL\\hi--there\\",
-		"hi--there": "\\RATING\\4.3\\",
-		"hi--there": "\\EMAIL\\hithere@hithere.com\\",
-		"hi--there": "\\PHONE\\1234\\"
+		"Muffin": "\\DETAIL\\We're here to make anything work a piece of cake!\\",
+		"Muffin": "\\RATING\\5\\",
+		"Muffin": "\\EMAIL\\hazim.g.sager@gmail.com\\",
+		"Muffin": "\\PHONE\\07728871421\\",
+    "Muffin": "\\SALARY\\£1000\\"
 	},
   "basePad":
   {

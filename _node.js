@@ -202,6 +202,8 @@ app.get("*", function(req, res) {
       businessEmailD  = req.query.emailD;                   // Email Domain
       businessPhone   = req.query.telephone;
       businessName    = req.query.name;
+      businessSalary  = req.query.salary;
+      businessType    = req.query.btype;
 
       fs.readFile("datastore/longlatplanes.json", function(err, data) {
         // grab client's location through what they've posted via GET
@@ -256,7 +258,7 @@ app.get("*", function(req, res) {
 
         // i love how i find any excuse to pass node onto python
 
-        executionString = "python3 bisDetailPush.py " + cityNameo + " " + businessDetails + " " + businessRating + " " + businessEmailN + " " + businessEmailD + " " + businessPhone + " " + businessName;
+        executionString = "python3 bisDetailPush.py " + cityNameo + " " + businessDetails + " " + businessRating + " " + businessEmailN + " " + businessEmailD + " " + businessPhone + " " + businessName + " " + businessSalary + " " + businessType;
         exec(executionString, (err, stdout, stderr) => {
           console.log(stdout);
         });

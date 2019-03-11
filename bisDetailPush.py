@@ -25,6 +25,8 @@ businessEmailN  = sys.argv[4]
 businessEmailD  = sys.argv[5]
 businessPhone   = sys.argv[6]
 businessName    = sys.argv[7]
+businessSalry   = sys.argv[8]
+businessType    = sys.argv[9]
 
 jsonFileHandlerR = open(jsonFile, 'r')
 
@@ -79,7 +81,7 @@ for lineCounter in range(len(jsonData) - 1):
 
                     jsonFileHandlerW.close()
 
-                    command = "python3 bisDetailPush.py " + city + " " + businessDetails + " " + businessRating + " " + businessEmailN + " " + businessEmailD + " " + businessPhone + " " + businessName;
+                    command = "python3 bisDetailPush.py " + city + " " + businessDetails + " " + businessRating + " " + businessEmailN + " " + businessEmailD + " " + businessPhone + " " + businessName + " " + businessSalry + " " + businessType;
                     os.system(command)
 
                     tf = False
@@ -119,12 +121,20 @@ for lineCounter in range(len(jsonData) - 1):
                 businessPhoneP  = "\"" + "PHONE\\" + businessPhone +"\"\n"
                 BPID            = "\t\t\"" + businessName + "\": " + businessPhoneP
 
-                insertionData   = BDID + BRID + BEID + BPID
+                businessSalary  = "\"" + "SALARY\\" + businessSalry +"\"\n"
+                BSID            = "\t\t\"" + businessName + "\": " + businessSalary
+
+                businessTyp     = "\"" + "TYPE\\" + businessType +"\"\n"
+                BTID            = "\t\t\"" + businessName + "\": " + businessTyp
+
+                insertionData   = BDID + BRID + BEID + BPID + BSID + BTID
 
                 testing.append(BDID)
                 testing.append(BRID)
                 testing.append(BEID)
-                testing.append(BPID[:-1] + ",\n")
+                testing.append(BPID)
+                testing.append(BSID)
+                testing.append(BTID[:-1] + ",\n")
 
                 try:
                     if jsonData[insertionLine-4:insertionLine] == testing:

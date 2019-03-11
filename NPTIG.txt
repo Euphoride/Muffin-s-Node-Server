@@ -1,4 +1,4 @@
-DETAIL: hi--there
-RATING: 4.3
-EMAIL: hithere@hithere.com
-PHONE: 1234
+DETAIL: We're here to make anything work a piece of cake!
+RATING: 5
+EMAIL: hazim.g.sager@gmail.com
+PHONE: 07728871421
