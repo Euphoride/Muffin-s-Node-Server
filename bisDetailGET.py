@@ -65,6 +65,9 @@ for lineCounter in range(len(jsonData) - 1):
 
                 lengthOfOurName  = len(ourNameFormatted)
 
+                print(ourLine[:lengthOfOurName])
+                print(ourNameFormatted)
+
                 if ourLine[:lengthOfOurName] == ourNameFormatted:
                     lineSplit      = ourLine.split(":")
 

@@ -204,6 +204,8 @@ app.get("*", function(req, res) {
       businessName    = req.query.name;
       businessSalary  = req.query.salary;
       businessType    = req.query.btype;
+      businessDet2    = req.query.det;
+      businessFE      = req.query.messageFE;
 
       fs.readFile("datastore/longlatplanes.json", function(err, data) {
         // grab client's location through what they've posted via GET
@@ -258,7 +260,7 @@ app.get("*", function(req, res) {
 
         // i love how i find any excuse to pass node onto python
 
-        executionString = "python3 bisDetailPush.py " + cityNameo + " " + businessDetails + " " + businessRating + " " + businessEmailN + " " + businessEmailD + " " + businessPhone + " " + businessName + " " + businessSalary + " " + businessType;
+        executionString = "python3 bisDetailPush.py " + cityNameo + " " + businessDetails + " " + businessRating + " " + businessEmailN + " " + businessEmailD + " " + businessPhone + " " + businessName + " " + businessSalary + " " + businessType + " " + businessDet2 + " " + businessFE;
         exec(executionString, (err, stdout, stderr) => {
           console.log(stdout);
         });
@@ -279,6 +281,13 @@ app.get("*", function(req, res) {
           res.write(dataToConsole);
           res.end();
         });
+      });
+
+    } else if (req.query.type == "photoGET") {
+      nameToUse = req.query.name;
+
+      fs.readFile("datastore/images/" + nameToUse + ".png", function (err, data) {
+        res.end(data);
       });
     } else {
       res.writeHead(404, {'Content-Type':'text/html'});

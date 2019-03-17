@@ -5,7 +5,18 @@
 		"Muffin": "\\RATING\\5\\",
 		"Muffin": "\\EMAIL\\hazim.g.sager@gmail.com\\",
 		"Muffin": "\\PHONE\\07728871421\\",
-    "Muffin": "\\SALARY\\£1000\\"
+\t"Muffin": "\\SALARY\\£1000\\",
+\t"Muffin": "\\TYPE\\General\\",
+\t"Muffin": "\\DETAIL2\\We here at Muffin are here to make people's lives easier! Whether it be through Applications, Holographic AI or a Solar Dyson Swarm - our goal is to progress mankind's quality of life further. Come join us on our journey!\\",
+\t"Muffin": "\\MESSAGEFE\\We're looking for talented software developers to help us improve our Application. We require that you have some knowledge of either Python, Javascript or Swift. You'll be helping improve our systems, making them faster, more responsive and even better!\\",
+		"Sushi--Bar": "\\DETAIL\\Sushi? We're here for you! The finest Sushi in London.\\",
+		"Sushi--Bar": "\\RATING\\4\\",
+		"Sushi--Bar": "\\EMAIL\\sushiBar@genericSushi.com\\",
+		"Sushi--Bar": "\\PHONE\\01234567890\\",
+		"Sushi--Bar": "\\SALARY\\£20000\\",
+		"Sushi--Bar": "\\TYPE\\General\\",
+		"Sushi--Bar": "\\DETAIL2\\undefined\\",
+		"Sushi--Bar": "\\MESSAGEFE\\Are you an experienced sushi chef and have worked with Sushi before? That's great because we are looking to hire a new chef to work Monday, Tuesday, Friday and Saturday!\\"
 	},
   "basePad":
   {

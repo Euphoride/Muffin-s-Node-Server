@@ -27,6 +27,8 @@ businessPhone   = sys.argv[6]
 businessName    = sys.argv[7]
 businessSalry   = sys.argv[8]
 businessType    = sys.argv[9]
+businessDetail2 = sys.argv[10]
+businessFE      = sys.argv[11]
 
 jsonFileHandlerR = open(jsonFile, 'r')
 
@@ -81,7 +83,7 @@ for lineCounter in range(len(jsonData) - 1):
 
                     jsonFileHandlerW.close()
 
-                    command = "python3 bisDetailPush.py " + city + " " + businessDetails + " " + businessRating + " " + businessEmailN + " " + businessEmailD + " " + businessPhone + " " + businessName + " " + businessSalry + " " + businessType;
+                    command = "python3 bisDetailPush.py " + city + " " + businessDetails + " " + businessRating + " " + businessEmailN + " " + businessEmailD + " " + businessPhone + " " + businessName + " " + businessSalry + " " + businessType + " " + businessDetail2 + " " + businessFE;
                     os.system(command)
 
                     tf = False
@@ -127,14 +129,22 @@ for lineCounter in range(len(jsonData) - 1):
                 businessTyp     = "\"" + "TYPE\\" + businessType +"\"\n"
                 BTID            = "\t\t\"" + businessName + "\": " + businessTyp
 
-                insertionData   = BDID + BRID + BEID + BPID + BSID + BTID
+                businessDet2    = "\"" + "DETAIL2\\" + businessType +"\"\n"
+                BD2ID           = "\t\t\"" + businessName + "\": " + businessDet2
+
+                businessFE      = "\"" + "MESSAGEFE\\" + businessType +"\"\n"
+                BFID            = "\t\t\"" + businessName + "\": " + businessFE
+
+                insertionData   = BDID + BRID + BEID + BPID + BSID + BTID + BD2ID + BFID
 
                 testing.append(BDID)
                 testing.append(BRID)
                 testing.append(BEID)
                 testing.append(BPID)
                 testing.append(BSID)
-                testing.append(BTID[:-1] + ",\n")
+                testing.append(BTID)
+                testing.append(BD2ID)
+                testing.append(BFID[:-1] + ",\n")
 
                 try:
                     if jsonData[insertionLine-4:insertionLine] == testing:

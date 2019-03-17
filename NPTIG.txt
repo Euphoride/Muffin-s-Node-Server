@@ -1,4 +1,8 @@
-DETAIL: We're here to make anything work a piece of cake!
-RATING: 5
-EMAIL: hazim.g.sager@gmail.com
-PHONE: 07728871421
+DETAIL: Sushi? We're here for you! The finest Sushi in London.
+RATING: 4
+EMAIL: sushiBar@genericSushi.com
+PHONE: 01234567890
+SALARY: £20000
+TYPE: General
+DETAIL2: undefined
+MESSAGEFE: Are you an experienced sushi chef and have worked with Sushi before? That's great because we are looking to hire a new chef to work Monday, Tuesday, Friday and Saturday!
