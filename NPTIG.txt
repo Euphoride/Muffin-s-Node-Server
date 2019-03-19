@@ -1,8 +1,8 @@
-DETAIL: Sushi? We're here for you! The finest Sushi in London.
-RATING: 4
-EMAIL: sushiBar@genericSushi.com
-PHONE: 01234567890
-SALARY: £20000
+DETAIL: We're here to make anything work a piece of cake!
+RATING: 5
+EMAIL: hazim.g.sager@gmail.com
+PHONE: 07728871421
+SALARY: £1000
 TYPE: General
-DETAIL2: undefined
-MESSAGEFE: Are you an experienced sushi chef and have worked with Sushi before? That's great because we are looking to hire a new chef to work Monday, Tuesday, Friday and Saturday!
+DETAIL2: We here at Muffin are here to make people's lives easier! Whether it be through Applications, Holographic AI or a Solar Dyson Swarm - our goal is to progress mankind's quality of life further. Come join us on our journey!
+MESSAGEFE: We're looking for talented software developers to help us improve our Application. We require that you have some knowledge of either Python, Javascript or Swift. You'll be helping improve our systems, making them faster, more responsive and even better!

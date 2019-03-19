@@ -135,11 +135,6 @@ app.get("*", function(req, res) {
           var parsedJSON = JSON.parse(data)['cityLocations'];
 
           var completos  = 1000000000000000;
-          // the amount of girls
-          // i defintely pull on
-          // a daily basis
-          //
-          // A poem, by Hazim.
 
           var cityNameo = ""
           var numero    = 0
@@ -217,11 +212,6 @@ app.get("*", function(req, res) {
         var parsedJSON = JSON.parse(data)['cityLocations'];
 
         var completos  = 1000000000000000;
-        // the amount of girls
-        // i defintely pull on
-        // a daily basis
-        //
-        // A poem, by Hazim.
 
         var cityNameo = ""
         var numero    = 0
@@ -285,10 +275,11 @@ app.get("*", function(req, res) {
 
     } else if (req.query.type == "photoGET") {
       nameToUse = req.query.name;
-
+      console.log(req.query);
       fs.readFile("datastore/images/" + nameToUse + ".png", function (err, data) {
         res.end(data);
       });
+
     } else {
       res.writeHead(404, {'Content-Type':'text/html'});
       res.end("-- You've reached the 404 wall. Either you're not invited or there's a bug in the server/request --");
