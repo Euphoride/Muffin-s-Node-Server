@@ -111,6 +111,12 @@ for lineCounter in range(len(jsonData) - 1):
 
                     jsonData[editLine] = ouredit
 
+                quickFileHandler = file.open("stats.txt", "r")
+
+                data = quickFileHandler.readlines()
+
+                ID = data[0]
+
                 businessDeets   = "\"" + "DETAIL\\" + businessDetails +"\",\n"
                 BDID            = "\t\t\"" + businessName + "\": " + businessDeets
 
@@ -135,7 +141,10 @@ for lineCounter in range(len(jsonData) - 1):
                 businessFE      = "\"" + "MESSAGEFE\\" + businessType +"\"\n"
                 BFID            = "\t\t\"" + businessName + "\": " + businessFE
 
-                insertionData   = BDID + BRID + BEID + BPID + BSID + BTID + BD2ID + BFID
+                businessID      = "\"" + "ID\\" + ID +"\"\n"
+                BIID            = "\t\t\"" + businessName + "\": " + businessID
+
+                insertionData   = BDID + BRID + BEID + BPID + BSID + BTID + BD2ID + BFID + BIID
 
                 testing.append(BDID)
                 testing.append(BRID)
@@ -144,7 +153,8 @@ for lineCounter in range(len(jsonData) - 1):
                 testing.append(BSID)
                 testing.append(BTID)
                 testing.append(BD2ID)
-                testing.append(BFID[:-1] + ",\n")
+                testing.append(BFID)
+                testing.append(BIID[:-1] + ",\n")
 
                 try:
                     if jsonData[insertionLine-4:insertionLine] == testing:

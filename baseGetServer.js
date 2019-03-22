@@ -1,5 +1,4 @@
-// Developed mainly by Emmanuel
-// Tweaks by Hazim
+// Initially developed by Emmanuel and Hazim
 
 /*
 *   BIG NOTE TO ANYONE WHO EVER IS FOOLISH ENOUGH TO ATTEMPT TO APPEND TO THIS CODE
@@ -253,6 +252,30 @@ app.get("*", function(req, res) {
         executionString = "python3 bisDetailPush.py " + cityNameo + " " + businessDetails + " " + businessRating + " " + businessEmailN + " " + businessEmailD + " " + businessPhone + " " + businessName + " " + businessSalary + " " + businessType + " " + businessDet2 + " " + businessFE;
         exec(executionString, (err, stdout, stderr) => {
           console.log(stdout);
+
+          fs.readFile("stats.txt", function (err, data) {
+            data = data.toString("UTF-8", 0, data.length);
+
+            dataArray = data.split("\n");
+
+            jobsSubmitted = dataArray[0];
+
+            jobsSubmittedInt = parseInt(jobsSubmitted)
+
+            jobsSubmittedInt = jobsSubmittedInt + 1
+
+            newArray = []
+
+            newArray.push(parseString(jobsSubmittedInt))
+            newArray.push(dataArray.splice(1, dataArray.length + 1))
+
+            newData = newArray.join()
+
+            fs.writeFile("stats.txt", newData, "utf-8", (err) => {
+              if (err) throw err;
+              console.log('Stats updated!');
+            });
+          });
         });
       });
 
