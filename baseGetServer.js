@@ -1,7 +1,7 @@
 // Initially developed by Emmanuel and Hazim
 
 /*
-*   BIG NOTE TO ANYONE WHO EVER IS FOOLISH ENOUGH TO ATTEMPT TO APPEND TO THIS CODE
+*   BIG NOTE TO ANYONE WHO EVER IS FOOLISH ENOUGH TO ATTEMPT TO APPEND TO THIS CODE (mainly me)
 *
 *   for the love of god please remember that javascript is async - so everything
 *   after a function(param, function2{}); must be within function2
