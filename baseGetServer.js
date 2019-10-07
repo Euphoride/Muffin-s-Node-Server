@@ -8,6 +8,9 @@
 *
 *
 *   Hazim (me) has legitimatley spent 7-8 hours of time trying to figure this out
+*
+*   Also I've realised, after reviewing this code many months later that my idea to use exec() to pass onto python
+*   was probably a bit dumb security-wise. RCE is probably not the best thing to have in a core script.
 */
 
 var http    = require('http');
