@@ -11,6 +11,8 @@
 *
 *   Also I've realised, after reviewing this code many months later that my idea to use exec() to pass onto python
 *   was probably a bit dumb security-wise. RCE is probably not the best thing to have in a core script.
+* 
+*   Final Edit: Sometime in July, 2019
 */
 
 var http    = require('http');
